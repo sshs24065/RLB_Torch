@@ -1,0 +1,25 @@
+from torch import nn, optim, rand
+from matplotlib import pyplot as plt
+
+li = [[],[]]
+model = nn.Sequential(nn.Linear(1,80), nn.ReLU(), nn.Linear(80,1))
+optimizer = optim.Adam(model.parameters())
+loss_fn = nn.L1Loss()
+for i in range(100):
+    model.train)
+    for __ in range(10):
+        model.zero_grad)
+        x = rand(1) * 100.0
+        loss = loss_fn(model(x), x**2)
+        loss.backward()
+        optimizer.step()
+        model.eval()
+        test_loss = 0.0
+    for _ in range(10):
+        x = rand(1) * 100.0
+        test_loss += loss_fn(model(x), x**2)
+    li[0].append(i)
+    li[1].append(test_loss.item()/100)
+    print(i)
+plt.plot(li[0],li[1])
+plt.show()
